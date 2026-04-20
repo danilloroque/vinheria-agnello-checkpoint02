@@ -17,7 +17,7 @@ function verificarEstoqueBaixo(estoque) {
     return estoque < 5;
 }
 
-function classficarVinho(Safra) {
+function classficarVinho(safra) {
     let anoAtual = 2026;
     let idade = anoAtual - safra;
 
@@ -47,9 +47,43 @@ function exibirDados(nome, tipo, safra, estoque, pais, classificacao) {
 let nome = validarEntrada("Insira seu nome: ");
 let estado = validarEntrada("Insira o seu estado: ");
 
+let cadastros = 0;
+let estoqueBaixo = 0;
+let vinhoMaisAntigo = 0;
+let menorSafra = 20;
+let continuar;
+
 alert(`Cadastro realizado!\nSeja bem vindo ${nome}, Veja os detalhes no console.`);
 
+//cadastro de vinhos
+alert(`Vamos cadastrar os Vinhos!`)
+while (continuar){
+    let nomeVinho = validarEntrada("Nome do vinho:");
+    let tipoVinho = validarEntrada("Tipo do vinho:");
+    let safraVinho = parseInt(validarEntrada("Ano da safra:"));
+    let estoqueVinho = parseInt (validarEntrada("Quantidade em estoque:"));
+    let paisVinho = validarEntrada(`País de origem:`);
 
+    //processamento
+    let classe = classificarVinho(safraVinho);
+
+    if (verificarEstoqueBaixo(estoqueVinho)) {
+        EstoqueBaixo++
+    }
+
+    //Encontrar o vinho mais antigo
+    if (safraVinho < menorSafra) {
+        menorSafra = safraVinho
+        vinhoMaisAntigo = nomeVinho;
+    }
+
+    //contagem
+    exibirDados(nomeVinho, tipoVinho, safraVinho, estoqueVinho, paisVinho, classe);
+    cadastros++;
+
+    continuar = confirm("Deseja cadastrar mais um vinho?");
+
+}
 
 console.log(`Olá ${nome}, esses são os nossos vinhos disponíveis para o estado de ${estado}: `);
 
@@ -85,3 +119,9 @@ ESTOQUE - 50
 
 PAÍS - Chile`
 );
+
+console.log(`Total de vinhos cadastrados: ${cadastros}`);
+console.log(`Vinhos com estoque baixo (< 5): ${estoqueBaixo}`);
+if (vinhoMaisAntigo) {
+    console.log(`O vinho mais antigo é: ${vinhoMaisAntigo}, da safra do ano de ${menorSafra}`);
+}

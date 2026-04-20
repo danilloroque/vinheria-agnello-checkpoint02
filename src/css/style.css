@@ -17,6 +17,7 @@ body{
     padding: 0;
 }
 
+
 img{
     border-radius: 5px;
     object-fit: cover;
@@ -24,8 +25,30 @@ img{
     height: 300px;
 }
 h1{
+    font-family: serif;
+    color: #EEE8AA;
+    text-align: center;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    display: inline-block;
+    width: 100%;
     text-align: center;
 }
 h2 {
+    color: #EEE8AA;
     text-align: center;
+}
+
+h3 {
+    color: #EEE8AA;
+    border-left: 4px solid #8b5a2b;
+    padding-left: 10px;
+    margin-top: 40px;
+}
+
+img{
+    border-radius: 8px;
+    max-width: 100%;
+    height: auto;
 }
